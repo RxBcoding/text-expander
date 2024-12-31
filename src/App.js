@@ -48,20 +48,28 @@ function TextExpander({
 
   const showMoreStyle = {
     color: buttonColor,
+    marginLeft: "6px",
   };
 
-  function truncate(string, collapsedNumWords) {
+  const displayText = isExpanded
+    ? children
+    : children.split(" ").slice(0, collapsedNumWords).join(" ") + "...";
+
+  /*function truncate(string, collapsedNumWords) {
     // Split the string into an array of words by splitting at the spaces
     let words = string.split(" ");
     // from 0 to the numbers of words we want, splice the amount of words we want out
     let truncateWords = words.splice(0, collapsedNumWords);
     // join the spliced out words back together as one string separated by a space
     return truncateWords.join(" ");
-  }
+  }*/
 
   return (
     <div className={className}>
-      {isExpanded ? children : truncate(children, collapsedNumWords)}...
+      {
+        /*{isExpanded ? children : truncate(children, collapsedNumWords)}...*/
+        displayText
+      }
       <span
         role="button"
         style={showMoreStyle}
